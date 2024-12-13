@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upptäck filmer</title>
+  <link rel="stylesheet" href="movies.css">
+  <!-- Laddar Chart.js-biblioteket för att skapa diagram -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+   <header>
+    <div class="header-container">
+      <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+      <h1>StreamFlare</h1>
+    </div>
+    <!-- Navigation menu -->
+    <nav>
+      <a href="movies.html">Upptäck Filmer</a>
+      <a href="favorites.html">Favoriter</a>
+      <a href="hi_low_game.html">Hi-Low Kortspel</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <!-- Dropdown för att välja olika kategorier av filmer -->
+      <select id="category-select">
+        <option value="all">Alla filmer</option>
+        <option value="popular">Populära filmer</option>
+        <option value="top_rated">Topprankade filmer</option>
+        <option value="upcoming">Kommande filmer</option>
+      </select>
+
+      <!-- Sökfält för att filtrera filmer baserat på text -->
+      <input type="text" id="search-bar" placeholder="Sök filmer..." />
+
+      <!-- Knappgrupp för att välja olika filmgenrer -->
+      <button id="action-btn" class="genre-btn">Action</button>
+      <button id="comedy-btn" class="genre-btn">Comedy</button>
+      <button id="sci-fi-btn" class="genre-btn">Sci-Fi</button>
+      <button id="drama-btn" class="genre-btn">Drama</button>
+      <button id="thriller-btn" class="genre-btn">Thriller</button>
+      <button id="horror-btn" class="genre-btn">Horror</button>
+
+      <!-- Container där filmerna kommer att visas dynamiskt -->
+      <div id="movies-grid"></div>
+
+      <div id="toast" class="toast"></div>
+
+
+
+      <!-- Diagram container för att visa statistik över filmer -->
+      <div class="chart-container">
+        <canvas id="movies-chart"></canvas> <!-- Canvas för stapeldiagram -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Filmprojekt | Alla rättigheter reserverade</p>
+  </footer>
+  <script src="movies.js"></script> 
+</body>
+</html>

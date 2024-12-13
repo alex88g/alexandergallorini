@@ -1,0 +1,439 @@
+
+/* Basic CSS */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  border-radius: 10px;
+  background-image: url('images/cinema.jpeg');
+  color: #ffffff;
+}
+
+/* Header stil för rubriker och navigation */
+header {
+  background-color: #2F7C60;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.header-container {
+  position: relative;
+  text-align: center;
+}
+
+.header-logo {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 70px;
+  height: auto;
+}
+nav a {
+  margin: 0 1rem; 
+  color: #ffffff; 
+  text-decoration: none; 
+}
+
+nav a:hover {
+  text-decoration: underline; 
+}
+
+main {
+  
+  flex-grow: 1; 
+}
+
+/* Footer Enkel design för sidfoten */
+footer {
+  background-color: #2F7C60;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+}
+
+#bigCover {
+  width: 100%;
+  height: 900px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #121212;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+#contentWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+#moviePoster {
+  position: relative;
+  z-index: 3;
+  transform: translate(5%, 30%);
+}
+
+#moviePoster img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: #c0c0c0db 0px 22px 40px 6px;
+}
+
+#movieInfo {
+  background: #000000b3;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 50%;
+}
+
+#movieInfo h2 {
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+}
+
+#movieInfo p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+#movieInfo p strong {
+  color: #ffd700;
+}
+
+#trailers {
+  margin-top: 150px;
+  padding: 30px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+#trailers h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffd700; 
+}
+
+#trailerContainer {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+/* Stil för iframe */
+#trailerContainer iframe {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 180px;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: #c0c0c0db 0px 0px 0px 1px;
+  scroll-snap-align: center;
+}
+
+#trailerContainer iframe:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+#comments h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffd700;
+}
+
+#commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#commentInput {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+  padding: 15px;
+  resize: none;
+}
+
+#ratingContainer {
+  margin: 10px 0;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0 2px;
+}
+
+.star.active {
+  color: #ffd700;
+}
+
+#submit {
+  padding: 10px 20px;
+  background-color: #2F7C60;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+
+#submit:hover {
+  filter: brightness(85%);
+  box-shadow: 0px 4px 8px #00000066;
+  transform: translateY(-2px);
+}
+
+#submit:active {
+  filter: brightness(85%);
+  transform: translateY(0);
+}
+
+#commentsList {
+  margin-top: 150px;
+ 
+}
+
+.comment {
+  background-color: #1e1e1e;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.comment button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.comment .edit-comment {
+  background-color: #007bff;
+}
+
+.comment .edit-comment:hover {
+  background-color: #0056b3;
+}
+
+.comment .delete-comment {
+  background-color: #dc3545;
+}
+
+.comment .delete-comment:hover {
+  background-color: #a71d2a;
+}
+
+/* Responsiv design*/
+@media (max-width: 1920px) and (min-width: 981px) {
+  #bigCover {
+    height: 900px;
+  }
+
+  #moviePoster img {
+    width: 300px;
+  }
+
+  #trailerContainer iframe {
+    width: 400px;
+    height: 225px;
+  }
+
+  #movieInfo {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 980px) and (min-width: 769px) {
+  #bigCover {
+    height: 800px;
+  }
+
+  #moviePoster img {
+    width: 250px;
+  }
+
+  #trailerContainer iframe {
+    width: 350px;
+    height: 200px;
+  }
+
+  #movieInfo {
+    max-width: 500px;
+  }
+}
+
+
+@media (max-width: 768px) and (min-width: 481px) {
+  body {
+   padding: auto;
+  }
+
+  header {
+    padding: 1rem 0.5rem;
+  }
+
+  .header-logo {
+    max-width: 80px;
+  }
+
+  #bigCover {
+    width: 90%;
+    height: 600px;
+    padding: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+  }
+  
+
+  #contentWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #moviePoster {
+    margin-bottom: 20px;
+  }
+
+  #moviePoster img {
+    width: 150px;
+  }
+
+  #movieInfo {
+    padding-top: 50px;
+    max-width: 90%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  #trailerContainer iframe {
+    width: 250px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+   padding: auto;
+  }
+
+  header {
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+ header h1 {
+  margin: 0; 
+  font-size: 1.2rem; 
+  text-transform: lowercase; 
+  padding-left: 1rem; 
+  white-space: nowrap;
+}
+
+  .header-logo {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-35%);
+    max-width: 50px;
+    height: 30px;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.4rem;
+  }
+
+
+  #bigCover {
+    width: 90%;
+    height: 600px;
+    padding: 20px;
+  }
+
+  #contentWrapper {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  #moviePoster {
+    margin-bottom: 0px;
+  }
+
+  #moviePoster img {
+    width: 150px;
+  }
+
+  #movieInfo {
+    padding-top: 50px;
+    max-width: 90%;
+    text-align: center;
+    font-size: 0.7rem; 
+    line-height: 1.4;
+}
+
+#trailers h2,
+#comments h2 {
+    font-size: 1.2rem;
+    font-weight: bold; 
+    margin-bottom: 0.5rem; 
+    text-align: center;
+}
+
+#trailers,
+#comments {
+    padding: 1rem; 
+}
+
+#trailerContainer {
+    text-align: center;
+    margin: 0 auto; 
+}
+
+  #trailerContainer iframe {
+    width: 250px;
+    height: 140px;
+  }
+
+  #commentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  #commentInput {
+    width: 60%;
+    max-width: 600px;
+    border-radius: 5px;
+    padding: 15px;
+    resize: none;
+  }
+}

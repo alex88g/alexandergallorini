@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi-Low Kortspel</title>
+    <link rel="stylesheet" href="hi_low_game.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+           <!-- Bild bredvid titeln -->
+          <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+          <h1>Hi-Low Kortspelet</h1>
+        </div>
+         <!-- Navigationsmeny -->
+        <nav>
+          <a href="movies.html">Upptäck Filmer</a>
+          <a href="favorites.html">Favoriter</a>
+          <a href="hi_low_game.html">Hi-Low Kortspel</a>
+        </nav>
+      </header>
+
+   <!-- Huvudsektion -->
+    <main>
+        <div class="cards-container">
+            <div class="card" id="player1Card">
+                <div class="card-3d">
+                    <div class="front" id="player1Front"></div>
+                    <div class="back" id="player1Back"></div>
+                </div>
+            </div>
+            <div class="card" id="player2Card">
+                <div class="card-3d">
+                    <div class="front" id="player2Front"></div>
+                    <div class="back" id="player2Back"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="nextTurn">Next Turn</button>
+        </div>
+        <div class="message" id="message">Player 1's turn: Make your move!</div>
+        <div class="score" id="score">Score Player 1: 0 | Score Player 2: 0</div>
+        <div class="beer-message" id="beerMessage"></div>
+        <div class="beer" id="beer"></div>
+    </main>
+
+   <!-- Fotsektion -->
+    <footer>
+        <p>&copy; 2024 Hi-Low Card Game | Alla rättigheter reserverade</p>
+    </footer>
+    <script src="hi_low_game.js"></script>
+</body>
+</html>

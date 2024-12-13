@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="details.css">
+</head>
+<body>
+    <header>
+    <div class="header-container">
+      <!-- Image next to the title -->
+      <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+      <h1>Movie Details</h1>
+    </div>
+    <!-- Navigation menu -->
+    <nav>
+      <a href="movies.html">Upptäck Filmer</a>
+      <a href="favorites.html">Favoriter</a>
+      <a href="hi_low_game.html">Hi-Low Kortspel</a>
+    </nav>
+  </header>
+  <main>
+    <section id="bigCover">
+        <div id="contentWrapper">
+          <div id="moviePoster">
+          </div>
+          <div id="movieInfo">
+            <h2>Movie Title</h2>
+            <p><strong>Overview:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p><strong>Release Date:</strong> YYYY-MM-DD</p>
+            <p><strong>Rating:</strong> 8.5</p>
+            <p><strong>Genres:</strong> Action, Adventure</p>
+          </div>
+       
+    </div>
+      </section>
+    <section id="trailers">
+        <h2>Trailers</h2>
+        <div id="trailerContainer">
+      <div id="trailerContainer"></div>
+    </section>
+    <section id="comments">
+      <h2>Comments</h2>
+      <form id="commentForm">
+        <textarea id="commentInput" placeholder="Leave a comment"></textarea>
+        <div id="ratingContainer">
+          <span data-rating="1" class="star">★</span>
+          <span data-rating="2" class="star">★</span>
+          <span data-rating="3" class="star">★</span>
+          <span data-rating="4" class="star">★</span>
+          <span data-rating="5" class="star">★</span>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+    <div id="toast" class="hidden"></div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Filmprojekt | Alla rättigheter reserverade</p>
+  </footer>
+  <script src="details.js"></script>
+</body>
+</html>

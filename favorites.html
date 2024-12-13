@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoriter</title>
+  <link rel="stylesheet" href="favorites.css">
+  <!-- Laddar Chart.js-biblioteket för att skapa diagram -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+      <h1>Välkommen till Favoriter</h1>
+    </div>
+    <!-- Navigation menu -->
+    <nav>
+      <a href="movies.html">Upptäck Filmer</a>
+      <a href="favorites.html">Favoriter</a>
+      <a href="hi_low_game.html">Hi-Low Kortspel</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sektion för att visa användarens favoritfilmer -->
+    <section id="favorites-container">
+      <h2>Dina Favoriter</h2>
+      <!-- Container där favoriterna kommer att visas dynamiskt -->
+      <div class="favorites-container"></div>
+
+      <div id="toast" class="toast"></div>
+      
+      <!-- Sektion för donut diagram -->
+      <div class="donuts-container">
+        <!-- Canvas för att visa favoriternas fördelning i ett donut diagram -->
+        <canvas id="favorites-donut-chart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Filmprojekt | Alla rättigheter reserverade</p>
+  </footer>
+  <script src="favorites.js"></script>
+</body>
+
+</html>
