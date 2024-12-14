@@ -419,15 +419,20 @@ main {
   #favorites-donut-chart {
     height: 200px;
   }
-
   header {
-    padding: 1rem 0.5rem;
+    padding: 0.3rem;
     text-align: center;
   }
 
+  footer {
+    background-color: #2F7C60;
+    color: #ffffff;
+    text-align: center;
+    padding: 0rem;
+  }
+
  header h1 {
-  
-  margin: 0; 
+  margin: 5; 
   font-size: 1.2rem; 
   text-transform: lowercase; 
   padding-left: 1rem; 

@@ -248,6 +248,53 @@ footer {
   background-color: #a71d2a;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-button {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  border-radius: 4px;
+  background-color: #4E937A;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-button:hover {
+  background-color: #3e7961;
+}
+
+.enlarge-button {
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  padding-left: 10px;
+  background-color: #4E937A;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.enlarge-button:hover {
+  background-color: #3e7961;
+}
+
+
 /* Responsiv design*/
 @media (max-width: 1920px) and (min-width: 981px) {
   #bigCover {
@@ -340,17 +387,20 @@ footer {
 }
 
 @media (max-width: 480px) {
-  body {
-   padding: auto;
-  }
-
   header {
-    padding: 1rem 0.5rem;
+    padding: 0.3rem;
     text-align: center;
   }
 
+  footer {
+    background-color: #2F7C60;
+    color: #ffffff;
+    text-align: center;
+    padding: 0rem;
+  }
+
  header h1 {
-  margin: 0; 
+  margin: 5; 
   font-size: 1.2rem; 
   text-transform: lowercase; 
   padding-left: 1rem; 
@@ -436,4 +486,64 @@ footer {
     padding: 15px;
     resize: none;
   }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    border-radius: 4px;
+    background-color: #4E937A;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .close-button:hover {
+    background-color: #3e7961;
+  }
+  
+  .enlarge-button {
+   margin-right: 230px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    padding-left: 10px;
+    background-color: #4E937A;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .enlarge-button:hover {
+    background-color: #3e7961;
+  }
+
+  #submit {
+    padding: 10px 15px;
+    background-color: #2F7C60;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  
+  }
+  
 }

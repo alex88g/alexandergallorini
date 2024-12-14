@@ -39,18 +39,66 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error fetching movie details:", error));
 
-  // Hämtar trailers för filmen
-  fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`)
-    .then((response) => response.json())
-    .then((data) => {
-      const trailers = data.results.filter(
-        (video) => video.site === "YouTube" && video.type === "Trailer"
-      );
-      trailers.forEach((trailer) => {
-        const trailerFrame = `<iframe src="https://www.youtube.com/embed/${trailer.key}" frameborder="0" allowfullscreen></iframe>`;
-        trailerContainer.innerHTML += trailerFrame;
+// Hämtar trailers för filmen
+fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`)
+  .then((response) => response.json())
+  .then((data) => {
+    const trailers = data.results.filter(
+      (video) => video.site === "YouTube" && video.type === "Trailer"
+    );
+
+    trailers.forEach((trailer) => {
+      const trailerFrame = document.createElement("iframe");
+      trailerFrame.src = `https://www.youtube.com/embed/${trailer.key}`;
+      trailerFrame.frameBorder = "0";
+      trailerFrame.allowFullscreen = true;
+      trailerFrame.style.width = "300px";
+      trailerFrame.style.height = "200px";
+      trailerFrame.classList.add("trailer-frame");
+
+      // Skapa en knapp för att förstora trailern
+      const enlargeButton = document.createElement("button");
+      enlargeButton.textContent = "Förstora";
+      enlargeButton.classList.add("enlarge-button");
+
+      enlargeButton.addEventListener("click", () => {
+        showFullscreenTrailer(trailer.key);
       });
+
+      const trailerWrapper = document.createElement("div");
+      trailerWrapper.classList.add("trailer-wrapper");
+      trailerWrapper.appendChild(trailerFrame);
+      trailerWrapper.appendChild(enlargeButton);
+
+      trailerContainer.appendChild(trailerWrapper);
     });
+  });
+
+// Funktion för att visa trailern i fullskärm
+function showFullscreenTrailer(videoKey) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  
+  const fullscreenFrame = document.createElement("iframe");
+  fullscreenFrame.src = `https://www.youtube.com/embed/${videoKey}`;
+  fullscreenFrame.frameBorder = "0";
+  fullscreenFrame.allowFullscreen = true;
+  fullscreenFrame.style.width = "80vw";
+  fullscreenFrame.style.height = "80vh";
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Stäng";
+  closeButton.classList.add("close-button");
+
+  closeButton.addEventListener("click", () => {
+    document.body.removeChild(modal);
+  });
+
+  modal.appendChild(fullscreenFrame);
+  modal.appendChild(closeButton);
+  document.body.appendChild(modal);
+}
+
 
   // Laddar kommentarer från localStorage
   const loadComments = () => {
