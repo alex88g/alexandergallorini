@@ -90,21 +90,21 @@ function getStars(rating) {
 
 // Visa filmer i gränssnittet
 function displayMovies(movies) {
-  moviesGrid.innerHTML = ''; // Clear previous content
-  const displayedMovieIds = new Set(); // Track displayed movie IDs
+  moviesGrid.innerHTML = ''; // Rensar tidigare innehåll
+  const displayedMovieIds = new Set(); // Spåra visade film ID
 
   movies.forEach((movie) => {
     if (displayedMovieIds.has(movie.id)) {
-      return; // Skip duplicates
+      return; // Hoppar över dubbletter
     }
 
-    displayedMovieIds.add(movie.id); // Add movie ID to the set
+    displayedMovieIds.add(movie.id); // Lägger till film ID i mängden
 
-    // Create the movie card
+    // Skapar filmkortet
     const movieCard = document.createElement('div');
     movieCard.classList.add('movie-card');
 
-    // Create image container
+    // Skapar bildbehållare
     const imageContainer = document.createElement('div');
     imageContainer.classList.add('image-container');
 
@@ -115,11 +115,11 @@ function displayMovies(movies) {
     imageContainer.appendChild(movieImage);
     movieCard.appendChild(imageContainer);
 
-    // Create overlay
+    // Skapar overlay
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
 
-    // Fetch detailed movie data for genres
+    // Hämtar detaljerad filmdata för genrer
     fetch(`${BASE_URL}/movie/${movie.id}?api_key=${API_KEY}&language=en-US`)
       .then((response) => response.json())
       .then((data) => {
@@ -132,7 +132,7 @@ function displayMovies(movies) {
           <p><strong>Releasedatum:</strong> ${movie.release_date || 'Ej tillgänglig'}</p>
         `;
 
-        // Add event listeners to navigate to details
+        // Lägg till event lyssnare för att navigera till detaljer
         overlay.querySelector('h3').onclick = () => {
           window.location.href = `details.html?movie_id=${movie.id}`;
         };
@@ -152,7 +152,7 @@ function displayMovies(movies) {
 
     imageContainer.appendChild(overlay);
 
-    // Add favorite button
+   // Lägger till favoritknapp
     const addButton = document.createElement('button');
     addButton.textContent = 'Lägg till favoriter';
     addButton.classList.add('add-favorite-btn');
@@ -166,13 +166,13 @@ function displayMovies(movies) {
 }
 
 
-// Function to get genre names from genre IDs
+// Funktion för att hämta genrenamn från genre ID
 function getGenreNames(genreIds) {
   if (!genreIds || genreIds.length === 0) return [];
 
   return genreIds
-    .map((id) => CATEGORIES[id]) // Map genre IDs to names using the CATEGORIES object
-    .filter(Boolean); // Remove undefined values
+    .map((id) => CATEGORIES[id]) // Mappa genre ID till namn med hjälp av CATEGORIES objektet
+    .filter(Boolean); // Ta bort undefined värden
 }
 
 // Visa ett stapeldiagram för filmer
@@ -222,7 +222,7 @@ function addMovieToFavorites(id, title, poster, rating) {
 }
 
 
-// Uppdatera filmens betyg
+// Uppdaterar filmens betyg
 function updateMovieRating(id, newRating) {
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const movie = favorites.find(fav => fav.id === id);
@@ -254,10 +254,10 @@ function addMovieToFavorites(id, title, poster, rating) {
 
 function showToast(message) {
   const toast = document.getElementById("toast");
-  toast.textContent = message; // Set the message
+  toast.textContent = message; // Ställer in meddelandet
   toast.classList.add("show"); // Add the show class to make it visible
 
-  // Remove the toast after 3 seconds
+  // Ta bort toasten efter 3 sekunder
   setTimeout(() => {
     toast.classList.remove("show");
   }, 3000);
@@ -265,7 +265,7 @@ function showToast(message) {
 
 
 
-// Kör vid sidladdning
+// Körs vid sidladdning
 document.addEventListener('DOMContentLoaded', () => {
   fetchMovies('all'); 
   displayFavorites();  

@@ -18,18 +18,21 @@
           <a href="index.html">Upptäck Filmer</a>
           <a href="favorites.html">Favoriter</a>
           <a href="hi_low_game.html">Hi-Low Kortspel</a>
+          <a href="cities.html">Sveriges Städer</a>
         </nav>
-      </header>
+    </header>
 
    <!-- Huvudsektion -->
     <main>
         <div class="cards-container">
+            <!-- Spelare 1 -->
             <div class="card" id="player1Card">
                 <div class="card-3d">
                     <div class="front" id="player1Front"></div>
                     <div class="back" id="player1Back"></div>
                 </div>
             </div>
+            <!-- Spelare 2 -->
             <div class="card" id="player2Card">
                 <div class="card-3d">
                     <div class="front" id="player2Front"></div>
@@ -38,9 +41,9 @@
             </div>
         </div>
         <div>
-            <button id="nextTurn">Next Turn</button>
+            <button id="nextTurn">Nästa tur</button>
         </div>
-        <div class="message" id="message">Player 1's turn: Make your move!</div>
+        <div class="message" id="message">Spelare 1:s tur: Gör ditt drag!</div>
         <div class="score" id="score">Score Player 1: 0 | Score Player 2: 0</div>
         <div class="beer-message" id="beerMessage"></div>
         <div class="beer" id="beer"></div>
@@ -48,8 +51,9 @@
 
    <!-- Fotsektion -->
     <footer>
-        <p>&copy; 2024 Hi-Low Card Game | Alla rättigheter reserverade</p>
+        <p>&copy; 2024 Hi-Low Kortspel | Alla rättigheter reserverade</p>
     </footer>
+
     <script src="hi_low_game.js"></script>
 </body>
 </html>

@@ -1,11 +1,9 @@
-// Hämtar HTML element
+// Hämtar HTML-element
 const player1CardEl = document.getElementById('player1Card');
 const player2CardEl = document.getElementById('player2Card');
-
 const messageEl = document.getElementById('message');
 const scoreEl = document.getElementById('score');
 const nextTurnButton = document.getElementById('nextTurn');
-const beerMessageEl = document.getElementById('beerMessage');
 const beerEl = document.getElementById('beer');
 
 // Initierar spelvariabler
@@ -14,6 +12,7 @@ let currentCardPlayer2 = drawCard();
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
 let currentPlayer = 1;
+const usedCards = new Set(); // För att hålla reda på använda kort
 
 // Kortsbilder kopplade till kortens värde
 const cardImages = {
@@ -92,60 +91,74 @@ function updateCardDisplay(cardElement, cardValue) {
 
 // Nästa spelomgång
 function nextTurn() {
-    const newCard = drawCard();
+    const newCard = drawCard(); // Dra ett nytt kort
 
     if (currentPlayer === 1) {
-        flipCard(player1CardEl, currentCardPlayer1, () => {
-            // Efter flip animation, utvärdera och uppdatera spelet
+        // Spelare 1:s tur
+        flipCard(player1CardEl, newCard, () => {
             if (newCard > currentCardPlayer1) {
+                // Spelare 1 vinner rundan
                 scorePlayer1++;
-                messageEl.textContent = 'Player 1 guessed correctly!';
-                messageEl.style.color = '#2F7C60';
-                messageEl.style.backgroundColor = '#E0F7E9';
-                messageEl.style.border = '2px solid #2F7C60'; 
-                messageEl.style.padding = '10px'; 
-                messageEl.style.borderRadius = '5px'; 
+                showMessage('Spelare 1 drog ett högre kort och vinner rundan!', true);
+            } else if (newCard < currentCardPlayer1) {
+                // Spelare 1 förlorar rundan
+                showMessage('Spelare 1 drog ett lägre kort och förlorar rundan! Ta en klunk öl!', false);
+                displayBeer(); // Visa öl för förloraren
             } else {
-                messageEl.textContent = 'Player 1 guessed wrong! Take a sip of beer!';
-                messageEl.style.color = '#A73A2C';
-                messageEl.style.backgroundColor = '#FDE2E1'; 
-                messageEl.style.border = '2px solid #A73A2C'; 
-                messageEl.style.padding = '10px';
-                messageEl.style.borderRadius = '5px';
-                displayBeer();
+                // Lika kort
+                showMessage('Spelare 1 drog samma kort! Ingen poäng delas ut.', false, true);
             }
-            currentCardPlayer1 = newCard; // Uppdaterar aktuellt kort
-            flipCard(player1CardEl, currentCardPlayer1); // Flippa nytt kort
-            updateGameState();
+            currentCardPlayer1 = newCard; // Uppdatera aktuellt kort
+            updateGameState(); // Byt till nästa spelare
         });
     } else {
-        flipCard(player2CardEl, currentCardPlayer2, () => {
-             // Efter flip animation, utvärdera och uppdatera spelet
+        // Spelare 2:s tur
+        flipCard(player2CardEl, newCard, () => {
             if (newCard > currentCardPlayer2) {
+                // Spelare 2 vinner rundan
                 scorePlayer2++;
-                messageEl.textContent = 'Player 2 guessed correctly!';
-                messageEl.style.color = '#2F7C60';
-                messageEl.style.backgroundColor = '#E0F7E9';
-                messageEl.style.border = '2px solid #2F7C60';
-                messageEl.style.padding = '10px';
-                messageEl.style.borderRadius = '5px';
+                showMessage('Spelare 2 drog ett högre kort och vinner rundan!', true);
+            } else if (newCard < currentCardPlayer2) {
+                // Spelare 2 förlorar rundan
+                showMessage('Spelare 2 drog ett lägre kort och förlorar rundan! Ta en klunk öl!', false);
+                displayBeer(); // Visa öl för förloraren
             } else {
-                messageEl.textContent = 'Player 2 guessed wrong! Take a sip of beer!';
-                messageEl.style.color = '#A73A2C';
-                messageEl.style.backgroundColor = '#FDE2E1';
-                messageEl.style.border = '2px solid #A73A2C';
-                messageEl.style.padding = '10px';
-                messageEl.style.borderRadius = '5px';
-                displayBeer();
+                // Lika kort
+                showMessage('Spelare 2 drog samma kort! Ingen poäng delas ut.', false, true);
             }
-            currentCardPlayer2 = newCard;
-            flipCard(player2CardEl, currentCardPlayer2);
-            updateGameState();
+            currentCardPlayer2 = newCard; // Uppdatera aktuellt kort
+            updateGameState(); // Byt till nästa spelare
         });
     }
 }
 
-// Flippa kortet med callback
+// här visar vi toast meddelande
+function showMessage(message, isWin, isDraw = false) {
+    messageEl.textContent = message;
+
+    if (isDraw) {
+        // Neutral färg för lika
+        messageEl.style.color = '#808080';
+        messageEl.style.backgroundColor = '#F5F5F5';
+        messageEl.style.border = '2px solid #808080';
+    } else if (isWin) {
+        // Grön färg för vinst
+        messageEl.style.color = '#2F7C60';
+        messageEl.style.backgroundColor = '#E0F7E9';
+        messageEl.style.border = '2px solid #2F7C60';
+    } else {
+        // Röd färg för förlust
+        messageEl.style.color = '#A73A2C';
+        messageEl.style.backgroundColor = '#FDE2E1';
+        messageEl.style.border = '2px solid #A73A2C';
+    }
+
+    messageEl.style.padding = '10px';
+    messageEl.style.borderRadius = '5px';
+}
+
+
+// Flippar kortet med callback
 function flipCard(cardElement, cardValue, callback) {
     const front = cardElement.querySelector('.front');
     const back = cardElement.querySelector('.back');
@@ -158,6 +171,8 @@ function flipCard(cardElement, cardValue, callback) {
         if (callback) callback(); // Kör callback efter animationen
     }, 500); // Vänta på att animationen ska slutföras
 }
+
+
 
 // Uppdaterar spelets status
 function updateGameState() {
@@ -172,7 +187,7 @@ function displayBeer() {
     const beerImg = document.createElement('img');
     beerImg.src = 'images/beer.gif'; // Söker efter GIF
     beerImg.alt = 'Beer';
-    beerImg.style.width = '100px'; // Optional: Adjust size
+    beerImg.style.width = '100px'; // Valfritt Justera storlek
     beerEl.appendChild(beerImg);
 
     // Tar bort ölbilden efter 3 sekunder

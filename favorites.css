@@ -111,7 +111,7 @@ main {
 }
 
 .remove-favorite-btn:disabled {
-  background-color: #ccc;
+  background-color: #ffffff;
   cursor: not-allowed;
 }
 
@@ -199,7 +199,7 @@ main {
   padding: 20px; 
   background-color: #ffffff; 
   border-radius: 10px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px #0000001a;
 }
 
 #favorites-donut-chart {

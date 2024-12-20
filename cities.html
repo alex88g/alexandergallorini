@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+        <head>
+        <div class="header-container">
+          <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+          <link rel="stylesheet" href="cities.css">
+        </div>
+        </head>
+        <body>
+        <header>
+            <div class="header-container">
+                <img src="images/movie-popcorn.png" alt="Logo" class="header-logo">
+                <h1>Lista över städer i Sverige</h1>
+        <!-- Navigationsmeny -->
+        <nav>
+          <a href="index.html">Upptäck Filmer</a>
+          <a href="favorites.html">Favoriter</a>
+          <a href="hi_low_game.html">Hi-Low Kortspel</a>
+          <a href="cities.html">Städer</a>
+        </nav>
+      </header>
+      <main>
+    <div class="container">
+        
+        <ul id="city-list"></ul>
+        <div class="add-city">
+            <h2>Add New City</h2>
+            <input type="text" id="new-city-name" placeholder="City Name">
+            <input type="number" id="new-city-population" placeholder="Population">
+            <button id="add-city-button">Add City</button>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+</main>
+    <footer>
+        <p>&copy; 2024 Filmprojekt | Alla rättigheter reserverade</p>
+      </footer>
+    <script src="cities.js"></script>
+</body>
+
+</html>
